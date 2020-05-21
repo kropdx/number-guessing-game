@@ -15,9 +15,15 @@ Welcome to the number guessing game
 start_game()
 
 while True:
-    guess = int(input('Guess a number between 1-10: '))
+    try:
+        guess = int(input('Guess a number between 1-10: '))
+    except ValueError:
+        print('That doesnt look like a number, please try again.')
+        continue
+    if guess > 10 or guess < 1:
+        print('Sorry, your guess is outside of the 1-10 range.')
+        continue
     attempts += 1
-
     if guess == winning_number:
         if attempts > 1:
             copy = 's'
